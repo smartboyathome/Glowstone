@@ -6,6 +6,7 @@ import net.glowstone.block.GlowBlock;
 import net.glowstone.block.GlowBlockState;
 import net.glowstone.block.entity.SignEntity;
 import org.bukkit.Material;
+import org.bukkit.Tag;
 import org.bukkit.block.Sign;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,9 +24,9 @@ public class GlowSign extends GlowBlockState implements Sign {
      */
     public GlowSign(GlowBlock block) {
         super(block);
-        if (block.getType() != Material.WALL_SIGN && block.getType() != Material.SIGN) {
+        if (Tag.WALL_SIGNS.isTagged(block.getType()) && Tag.STANDING_SIGNS.isTagged(block.getType())) {
             throw new IllegalArgumentException(
-                "GlowSign: expected WALL_SIGN or SIGN got " + block.getType());
+                "GlowSign: expected WALL_SIGN or STANDING_SIGN got " + block.getType());
         }
         lines = getBlockEntity().getLines();
     }

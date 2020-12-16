@@ -2,9 +2,10 @@ package net.glowstone.block.entity.state;
 
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
+
+import com.destroystokyo.paper.MaterialTags;
 import lombok.Getter;
 import net.glowstone.block.GlowBlock;
-import net.glowstone.block.MaterialUtil;
 import net.glowstone.block.entity.DispenserEntity;
 import net.glowstone.dispenser.ArmorDispenseBehavior;
 import net.glowstone.dispenser.BucketDispenseBehavior;
@@ -80,7 +81,7 @@ public class GlowDispenser extends GlowContainer implements Dispenser, BlockProj
         registry.putBehavior(Material.DIAMOND_LEGGINGS, armorDispenseBehavior);
         registry.putBehavior(Material.DIAMOND_CHESTPLATE, armorDispenseBehavior);
         registry.putBehavior(Material.DIAMOND_HELMET, armorDispenseBehavior);
-        for (Material headType : MaterialUtil.STANDING_HEADS) {
+        for (Material headType : MaterialTags.SKULLS.getValues()) {
             registry.putBehavior(headType, armorDispenseBehavior);
         }
         registry.putBehavior(Material.PUMPKIN, armorDispenseBehavior);

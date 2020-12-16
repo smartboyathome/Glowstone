@@ -4,6 +4,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static net.glowstone.GlowServer.logger;
 
+import com.destroystokyo.paper.MaterialTags;
 import com.destroystokyo.paper.Title;
 import com.destroystokyo.paper.profile.PlayerProfile;
 import com.flowpowered.network.Message;
@@ -45,7 +46,6 @@ import net.glowstone.GlowWorld;
 import net.glowstone.GlowWorldBorder;
 import net.glowstone.block.GlowBlock;
 import net.glowstone.block.ItemTable;
-import net.glowstone.block.MaterialUtil;
 import net.glowstone.block.blocktype.BlockBed;
 import net.glowstone.block.entity.SignEntity;
 import net.glowstone.block.itemtype.ItemFood;
@@ -145,6 +145,7 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.Statistic;
+import org.bukkit.Tag;
 import org.bukkit.WeatherType;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
@@ -1558,7 +1559,7 @@ public class GlowPlayer extends GlowHumanEntity implements Player {
         GlowBlock foot = BlockBed.getFoot(block);
         if (head != null) {
             // If there is a bed, try to find an empty spot next to the bed
-            if (MaterialUtil.BEDS.contains(head.getType())) {
+            if (MaterialTags.BEDS.isTagged(head.getType())) {
                 Block spawn = BlockBed.getExitLocation(head, foot);
                 return spawn == null ? null : spawn.getLocation().add(0.5, 0.1, 0.5);
             }
@@ -3597,7 +3598,7 @@ public class GlowPlayer extends GlowHumanEntity implements Player {
                 Material toolType = tool.getType();
                 if (block.getType() == Material.COBWEB && ToolType.SWORD.matches(toolType)) {
                     breakingTimeMultiplier = 0.1;
-                } else if (MaterialUtil.WOOLS.contains(block.getType())
+                } else if (Tag.WOOL.contains(block.getType())
                         && toolType == Material.SHEARS) {
                     breakingTimeMultiplier = 0.3;
                 } else {
