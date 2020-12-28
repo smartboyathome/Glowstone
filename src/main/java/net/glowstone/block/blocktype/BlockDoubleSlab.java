@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import net.glowstone.block.GlowBlock;
-import net.glowstone.block.GlowTags;
 import net.glowstone.i18n.ConsoleMessages;
 import net.glowstone.inventory.ToolType;
 import org.bukkit.Material;

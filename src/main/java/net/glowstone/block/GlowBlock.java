@@ -17,6 +17,7 @@ import net.glowstone.block.blocktype.BlockType;
 import net.glowstone.block.data.BlockDataManager;
 import net.glowstone.block.entity.BlockEntity;
 import net.glowstone.chunk.GlowChunk;
+import net.glowstone.datapack.tags.ExtraMaterialTags;
 import net.glowstone.net.message.play.game.BlockChangeMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.FluidCollisionMode;
@@ -268,7 +269,7 @@ public class GlowBlock implements Block {
 
     @Override
     public boolean isEmpty() {
-        return GlowTags.AIR_VARIANTS.isTagged(getType());
+        return ExtraMaterialTags.AIR_VARIANTS.isTagged(getType());
     }
 
     @Override
